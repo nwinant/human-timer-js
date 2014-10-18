@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Human Timer JS: Demos</title>
+
+    <!-- Third-party libs for demo
+	 Note that these libs are only used by this demo code.
+	 human-timer.js is completely standalone code.
+      -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Project libs -->
+    <script src="js/human-timer.js"></script>
+
+    <!-- Demos -->
+    <script>
+      var demo1 = function() {
+        var timer = new HumanTimer();
+
+        console.log("Demo 1 initialized!");
+      }
+
+      $( document ).ready(function() {
+        demo1();
+      });
+    </script>
+  </head>
+  <body>
+
+<h1>Human Timer JS: Demos</h1>
+
+     <div id="demo1"/>
+
+  </body>
+</html>
