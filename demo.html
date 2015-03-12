@@ -16,11 +16,11 @@
     <script>
       var demo1 = function() {
         var timer1 = HumanTimer({ duration: 1000 });
-		console.log("1", timer1.duration());
-		timer1.duration(500);
-		console.log("2", timer1.duration());
-		console.log("3", timer1.duration(700).duration());
-        console.log("4", timer1.options());
+        console.log("Should be 1000", timer1.duration());
+        timer1.duration(500);
+        console.log("Should be 500", timer1.duration());
+        console.log("Should be 700", timer1.duration(700).duration());
+        console.log("Options", timer1.options());
       }
 
       $( document ).ready(function() {
