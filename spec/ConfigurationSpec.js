@@ -3,11 +3,8 @@ describe("Configuration", function() {
     it("should have sane defaults", function() {
         var timer = HumanTimer.create();
         expect(timer.duration()).toEqual(0);
-        expect(timer.options().log).toEqual(true);
-        expect(timer.options()).toEqual({
-          "duration": 0,
-          "log": true
-        });
+        expect(timer.options().log).toEqual(false);
+        expect(timer.options()).toEqual(HumanTimer.defaults);
     });
 
     it("should not override defaults if given empty options", function() {
@@ -23,10 +20,10 @@ describe("Configuration", function() {
         var timer = HumanTimer.create(options);
         expect(timer.duration()).toEqual(options.duration);
         expect(timer.options().duration).toEqual(options.duration);
-        expect(timer.options().log).toEqual(true);
+        expect(timer.options().log).toEqual(false);
         expect(timer.options()).toEqual({
           "duration": 1000,
-          "log": true
+          "log": false
         });
     });
 

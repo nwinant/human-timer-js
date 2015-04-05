@@ -14,7 +14,7 @@ var HumanTimer = {
    */
   defaults: {
     duration:0,
-    log: true
+    log: false
   },
 
   /**
@@ -23,19 +23,10 @@ var HumanTimer = {
   create: function(opts) {
     var config={};
     HumanTimer.copyProperties(HumanTimer.defaults, config);
-    var log;
     var timeoutId;
     var startTime;
     var ticks;
     var tick_dur=1000;
-
-    var updateLog = function() {
-      if (config.log) {
-        log = function(msg) { console.log(arguments); }
-      } else {
-        log = function(msg) {};
-      }
-    }
 
     var reset = function() {
       ticks=0;
@@ -46,15 +37,15 @@ var HumanTimer = {
     };
 
     var onStart = function() {
-      log("Started", config.duration, startTime);
+      if (config.log) { console.log("Started", config.duration, startTime); }
     }
 
     var onStop = function() {
-      log("Stopped", new Date());
+      if (config.log) { console.log("Stopped", new Date()); }
     };
 
     var tick = function() {
-      log("Tick", ticks, elapsed(), config.duration);
+      if (config.log) { console.log("Tick", ticks, elapsed(), config.duration); }
       ticks++;
       if (elapsed() <= config.duration) {
         timeoutId = window.setTimeout(tick, tick_dur);
@@ -71,12 +62,11 @@ var HumanTimer = {
       for (var key in values) {
         if (values.hasOwnProperty(key)) config[key]=values[key];
       }
-      updateLog();
       return timer;
     };
 
     timer.options(opts);
-    log("HumanTimerJS instantiated!", config);
+    if (config.log) { console.log("HumanTimerJS instantiated!", config); }
 
     timer.duration = function(value) {
       if (!arguments.length) return config.duration;
