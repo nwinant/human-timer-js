@@ -15,7 +15,7 @@
     <!-- Demos -->
     <script>
       var demo1 = function() {
-        var timer1 = HumanTimer({ duration: 1000 });
+        var timer1 = HumanTimer.create({ duration: 1000 });
         console.log("Should be 1000", timer1.duration());
         timer1.duration(500);
         console.log("Should be 500", timer1.duration());
