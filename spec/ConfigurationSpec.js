@@ -27,25 +27,27 @@ describe("Configuration", function() {
     });
   });
 
-  it("should chain configuration setters", function() {
-    var timer = HumanTimer.create();
-    expect(timer.duration(50)).toBe(timer);
-  });
+  describe("Configuration chaining", function() {
+    it("should chain configuration setters", function() {
+      var timer = HumanTimer.create();
+      expect(timer.duration(50)).toBe(timer);
+    });
 
-  it("no-arg config functions should return values", function() {
-    var timer = HumanTimer.create();
-    expect(timer.duration()).toBe(0);
-    timer.duration(50);
-    expect(timer.duration()).toBe(50);
-  });
+    it("no-arg config functions should return values", function() {
+      var timer = HumanTimer.create();
+      expect(timer.duration()).toBe(0);
+      timer.duration(50);
+      expect(timer.duration()).toBe(50);
+    });
 
-  it("should chain configuration setters & getters", function() {
-    var timer = HumanTimer.create();
-    expect(timer.duration(50)).toBe(timer);
-    timer.duration(50);
-    expect(timer.duration()).toBe(50);
-    expect(timer.duration(7000).duration()).toBe(7000);
-    expect(timer.duration(500).duration()).toBe(500);
+    it("should chain configuration setters & getters", function() {
+      var timer = HumanTimer.create();
+      expect(timer.duration(50)).toBe(timer);
+      timer.duration(50);
+      expect(timer.duration()).toBe(50);
+      expect(timer.duration(7000).duration()).toBe(7000);
+      expect(timer.duration(500).duration()).toBe(500);
+    });
   });
 
   it("should throw an exception if misconfigured", function() {
